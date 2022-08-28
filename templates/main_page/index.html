@@ -1,0 +1,81 @@
+{% extends "layout/base.html" %}
+{% load custom_tags %}
+
+{% block title %}
+	Pandypod
+{% endblock title %}
+
+{% block header_content %}
+<section class="hero__main container">
+
+	<div class="hero__texts">
+	  <h1 class="hero__title">{{header_title}}</h1>
+	  <p class="hero__paragraph">
+		{{header_body|safe}} 
+	  </p>
+	  <a href="{{visit_us_url}}" class="cta" target="_blank">Visit Us!</a>
+	</div>
+
+	<div class="carousel">
+		<div class="carousel__container">
+			<button class="carousel__previous">
+				<i class="fa-solid fa-chevron-left"></i>
+			</button>
+
+			<div class="carousel__list">
+				{% for product in products %}
+					<div class="carousel__element">
+						<a href="{{product.url}}" class="product-url" target="_blank">
+							<img src="{{product.image.url}}" class="product__img" alt="{{product.title}}">
+							<p>{{product.title}}</p>
+						</a>
+					</div>
+					
+				{% endfor %}				
+			</div>
+			<button class="carousel__next">
+				<i class="fa-solid fa-chevron-right"></i>
+			</button>
+		</div>
+		<div role="tablist" class="carousel__indicators"></div>
+	</div>
+	<!-- <div class="wave wave--bottom reveal"></div> -->
+
+</section>
+{% endblock header_content %}
+
+{% block main_content %}
+
+{% for section_content in section_contents %}
+<section class="section reveal {% if section_content.order|mod:2 == 0 %} section--white {% endif %}">
+	<div class="section__container {% if section_content.order|mod:2 == 0 %} section__container--inverse {% endif %} container">
+	  <figure class="section__picture">
+		<img src="{{section_content.image.url}}" class="section__img" alt="">
+	  </figure>
+
+	  <div class="section__texts">
+		<h2 class="subtitle">{{section_content.title}}</h2>
+		<p class="section__paragraph">{{section_content.body|safe}}</p>
+	  </div>
+	</div>
+	
+	<!-- {% if section_content.order|mod:2 == 0 %}
+		<div class="wave wave--top"></div>
+		<div class="wave wave--bottom"></div>
+	{% endif %} -->
+</section>
+{% endfor %}
+
+<!-- <section class="question {% if section_contents|len_mod:2 == 0 %} question--paleblue {% endif %}">
+	<div class="question__texts container">
+	  <h2 class="subtitle">Ready To Build Your Community?</h2>
+	  <a href="" class="cta">Get Started For Free</a>
+	</div>
+
+	{% if section_contents|len_mod:2 != 0 %}
+		<div class="wave wave--top"></div>
+	{% endif %}
+	<div class="wave wave--bottom"></div>
+</section> -->
+
+{% endblock main_content %}

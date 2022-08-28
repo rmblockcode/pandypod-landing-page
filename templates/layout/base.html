@@ -1,0 +1,83 @@
+{% load static %}
+{% load widget_tweaks %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+
+  <link rel="icon" type="image/png" sizes="32x32" href="{% static '/images/favicon.ico' %}">
+  
+  <title>{% block title %}{% endblock title %}</title>
+
+  <link rel="stylesheet" href="{% static '/css/style.css' %}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Inter:wght@300;500&family=Open+Sans:wght@400;600;700&family=Poppins:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.css">
+  <script src="https://kit.fontawesome.com/e4691676b2.js" crossorigin="anonymous"> </script>
+
+</head>
+<body>
+
+  <header class="hero">
+    <nav class="hero__nav container">
+
+      <figure class="hero__logo">
+        <a href="{{main_page_url}}">
+          <img src="{{company_logo}}" class="her__huddle" alt="Pandypod's Logo">
+        </a>
+      </figure>
+
+      <figure class="socialmedia__header">
+        <a href="{{instagram.0}}">
+          <img src="{{instagram.1}}" class="her__huddle" alt="Instagram account">
+        </a>
+      </figure>
+
+    </nav>
+
+    {% block header_content %}{% endblock header_content %}
+    
+  </header>
+
+  <main class="main">
+    {% block main_content %}{% endblock main_content %}
+  </main>
+
+  <footer class="footer">
+    <div class="footer__container container">
+      <section class="footer__newsletter">
+        <h2 class="footer__title">Stay Tuned</h2>
+        <p class="footer__paragraph">Subscribe to our mailing list to stay up to date with our new releases, donations, news and more. We’ll never 
+          send you spam or pass on your email address</p>
+        <div class="footer__form--response"></div>
+        <form action="" id="footer__subscription-form" class="footer__form">
+          {% csrf_token %}
+          {% for field in form %}
+            {% render_field field placeholder=field.label class+="footer__input" %}
+          {% endfor %}
+          <input type="submit" class="footer__cta" value="subscribe">
+        </form>
+      </section>
+
+      <section class="footer__content">
+        <img src="images/logo.svg" class="footer__logo" alt="">
+
+        <p class="footer__paragraph">For any additional information, do not hesitate to follow us on our social networks or write to the following email:</p>
+
+        <div class="footer__contact footer__contact--email">
+          <img src="/static/images/icon-email.svg" class="footer__img" alt="">
+        </div>
+
+      </section>
+
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/glider-js@1.7.3/glider.min.js"></script>
+  <script src="{% static '/js/app.js' %}"></script>
+</body>
+</html>
