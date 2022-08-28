@@ -34,9 +34,7 @@
     export ALLOWED_HOSTS=*
 
     # Static files
-    export STATIC_ROOT=/$HOME/static/
     export STATIC_URL=/static/
-    export MEDIA_ROOT=/$HOME/media/
     export MEDIA_URL=/media/
 
     export MAIN_PAGE_URL=http://127.0.0.1:8101/
