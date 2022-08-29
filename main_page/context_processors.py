@@ -5,9 +5,13 @@ def company_settings(request):
     company = CompanySettings.objects.first()
 
     kwargs = {
-        'main_page_url': MAIN_PAGE_URL,
-        'company_logo': company.logo.url,
+        'main_page_url': MAIN_PAGE_URL
     }
+
+    if company:
+        kwargs.update({
+            'company_logo': company.logo.url,
+        })
 
     social_medias = SocialMedia.objects.filter(active=True).all()
 
