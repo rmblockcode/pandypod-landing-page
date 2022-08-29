@@ -191,6 +191,10 @@ body {
     text-align: center;
 }
 
+.glider-track {
+    margin: auto !important;
+}
+
 .glider-dot.active {
     background: var(--very-dark-cyan) !important;
 }
