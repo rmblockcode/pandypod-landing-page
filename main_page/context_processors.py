@@ -10,7 +10,7 @@ def company_settings(request):
 
     if company:
         kwargs.update({
-            'company_logo': company.logo.url,
+            'company_logo': company.logo,
         })
 
     social_medias = SocialMedia.objects.filter(active=True).all()
@@ -19,8 +19,7 @@ def company_settings(request):
         kwargs.update({
             social_media.unique_description: (
                 social_media.url,
-                social_media.logo.url,
-                social_media.logo_bg_white.url)
+                social_media.logo)
         })
 
     return kwargs

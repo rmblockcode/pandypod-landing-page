@@ -26,7 +26,7 @@
 				{% for product in products %}
 					<div class="carousel__element">
 						<a href="{{product.url}}" class="product-url" target="_blank">
-							<img src="{{product.image.url}}" class="product__img" alt="{{product.title}}">
+							<img src="{{product.image}}" class="product__img" alt="{{product.title}}">
 							<p>{{product.title}}</p>
 						</a>
 					</div>
@@ -50,7 +50,7 @@
 <section class="section reveal {% if section_content.order|mod:2 == 0 %} section--white {% endif %}">
 	<div class="section__container {% if section_content.order|mod:2 == 0 %} section__container--inverse {% endif %} container">
 	  <figure class="section__picture">
-		<img src="{{section_content.image.url}}" class="section__img" alt="">
+		<img src="{{section_content.image}}" class="section__img" alt="">
 	  </figure>
 
 	  <div class="section__texts">

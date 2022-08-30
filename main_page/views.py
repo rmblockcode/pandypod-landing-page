@@ -17,7 +17,7 @@ def index(request):
     context = {
         'header_title': header_content.title,
         'header_body': header_content.body,
-        'image': header_content.image.url,
+        'image': header_content.image,
         'section_contents': section_contents,
         'products': products,
         'visit_us_url': settings.VISIT_US_BTN,

@@ -15,7 +15,7 @@ class Product(TimeStampMixin):
     title = models.CharField('Title', max_length=100)
     summary = models.CharField('Summary', max_length=300)
     body = RichTextField()
-    image = models.ImageField(upload_to='products')
+    image = models.URLField()
     order = models.IntegerField('Display Order', unique=True)
     more_popular = models.BooleanField('More Popular', default=False)
     url = models.URLField('Amazon URL')
